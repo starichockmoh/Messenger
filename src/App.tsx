@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {StrictMode} from "react";
+import {Provider, useDispatch, useSelector} from "react-redux";
+import store, {AppStateType} from "./Redux/Store";
+import {BrowserRouter, withRouter} from "react-router-dom";
+import {Layout} from "./Components/Layout/Layout";
+import {Menu} from "./Components/Menu/Menu";
+import {SettingsPage} from "./Components/Settings/SettingsPage/SettingsPage"
+import {CSSTransition} from "react-transition-group";
+import "./Components/LeftSideBar/AnimationSideBar.css"
+import {LeftSideBar} from "./Components/LeftSideBar/LeftSideBar";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = () => {
+    const isActiveMenu = useSelector((state: AppStateType) => state.App.isActiveMenu)
+    return <>
+        <CSSTransition unmountOnExit in={isActiveMenu} classNames={'sideBar'} timeout={300}>
+           <LeftSideBar/>
+        </CSSTransition>
+        <Layout/>
+    </>
 }
-
-export default App;
+const AppRouter = withRouter(App)
+const AppContainer = () => {
+    return <StrictMode>
+        <Provider store={store}>
+            <BrowserRouter>
+                <AppRouter/>
+            </BrowserRouter>
+        </Provider>
+    </StrictMode>
+}
+export default AppContainer
