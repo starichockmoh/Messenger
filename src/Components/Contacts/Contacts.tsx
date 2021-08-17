@@ -1,11 +1,21 @@
 import React, {ChangeEvent, useState} from "react";
-import {ContactsBlock, SearchBlock, SearchIcon} from "./Contacts.styled"
+import {
+    AddContactBlock, AddContactButton,
+    Contact,
+    ContactAvatar,
+    ContactsBlock,
+    ContactsList,
+    ContactsUserName, LastData,
+    SearchBlock,
+    SearchIcon
+} from "./Contacts.styled"
 import {SideHeader} from "../LeftSideBar/SideHeader";
 import TextArea from "antd/es/input/TextArea";
-import {SpecialLine} from "../ChannelInfo/ChannelInfo.styled";
-import {LineHr} from "../ChannelInfo/Description/Description.styled";
-import {SearchOutlined} from "@ant-design/icons";
-
+import photo from "./../../Assets/photo_2017-11-03_18-44-32.jpg"
+import photo1 from "./../../Assets/amds.jpg"
+import photo2 from "./../../Assets/maska.jpg"
+import photo3 from "./../../Assets/putin.jpeg"
+import photo4 from "./../../Assets/krest.jpg"
 
 export const Contacts: React.FC = () => {
     const [InputValue, SetInputValue] = useState('')
@@ -19,9 +29,163 @@ export const Contacts: React.FC = () => {
             <TextArea onChange={onInputChange} value={InputValue} bordered={false} autoSize={{maxRows: 1}}
                       placeholder={'Search'}/>
         </SearchBlock>
-        <LineHr/>
-        {/*<Contacts>*/}
-        {/*    вавава*/}
-        {/*</Contacts>*/}
+        <ContactsList>
+            <Contact>
+                <ContactAvatar src={photo}/>
+                <div>
+                    <ContactsUserName>
+                        Vladislav
+                    </ContactsUserName>
+                    <LastData>
+                        last seen 7 hours ago
+                    </LastData>
+                </div>
+
+            </Contact>
+            <Contact>
+                <ContactAvatar src={photo1}/>
+                <div>
+                    <ContactsUserName>
+                        Kalim
+                    </ContactsUserName>
+                    <LastData>
+                        last seen 21.09.12
+                    </LastData>
+                </div>
+
+            </Contact>
+            <Contact>
+                <ContactAvatar src={photo2}/>
+                <div>
+                    <ContactsUserName>
+                        Kissa
+                    </ContactsUserName>
+                    <LastData>
+                        last seen 3 hours ago
+                    </LastData>
+                </div>
+
+            </Contact>
+            <Contact>
+                <ContactAvatar src={photo3}/>
+                <div>
+                    <ContactsUserName>
+                        Vasik
+                    </ContactsUserName>
+                    <LastData>
+                        online
+                    </LastData>
+                </div>
+            </Contact>
+            <Contact>
+                <ContactAvatar src={photo4}/>
+                <div>
+                    <ContactsUserName>
+                        Юран
+                    </ContactsUserName>
+                    <LastData>
+                        last seen recently
+                    </LastData>
+                </div>
+            </Contact>
+            <Contact>
+                <ContactAvatar src={photo1}/>
+                <div>
+                    <ContactsUserName>
+                        Kalim
+                    </ContactsUserName>
+                    <LastData>
+                        last seen 21.09.12
+                    </LastData>
+                </div>
+
+            </Contact>
+            <Contact>
+                <ContactAvatar src={photo2}/>
+                <div>
+                    <ContactsUserName>
+                        Kissa
+                    </ContactsUserName>
+                    <LastData>
+                        last seen 3 hours ago
+                    </LastData>
+                </div>
+
+            </Contact>
+            <Contact>
+                <ContactAvatar src={photo3}/>
+                <div>
+                    <ContactsUserName>
+                        Vasik
+                    </ContactsUserName>
+                    <LastData>
+                        online
+                    </LastData>
+                </div>
+            </Contact>
+            <Contact>
+                <ContactAvatar src={photo4}/>
+                <div>
+                    <ContactsUserName>
+                        Юран
+                    </ContactsUserName>
+                    <LastData>
+                        last seen recently
+                    </LastData>
+                </div>
+            </Contact>
+            <Contact>
+                <ContactAvatar src={photo1}/>
+                <div>
+                    <ContactsUserName>
+                        Kalim
+                    </ContactsUserName>
+                    <LastData>
+                        last seen 21.09.12
+                    </LastData>
+                </div>
+
+            </Contact>
+            <Contact>
+                <ContactAvatar src={photo2}/>
+                <div>
+                    <ContactsUserName>
+                        Kissa
+                    </ContactsUserName>
+                    <LastData>
+                        last seen 3 hours ago
+                    </LastData>
+                </div>
+
+            </Contact>
+            <Contact>
+                <ContactAvatar src={photo3}/>
+                <div>
+                    <ContactsUserName>
+                        Vasik
+                    </ContactsUserName>
+                    <LastData>
+                        online
+                    </LastData>
+                </div>
+            </Contact>
+            <Contact>
+                <ContactAvatar src={photo4}/>
+                <div>
+                    <ContactsUserName>
+                        Юран
+                    </ContactsUserName>
+                    <LastData>
+                        last seen recently
+                    </LastData>
+                </div>
+            </Contact>
+        </ContactsList>
+        <AddContactBlock>
+            <AddContactButton type={"link"}>
+                ADD CONTACT
+            </AddContactButton>
+
+        </AddContactBlock>
     </ContactsBlock>
 }

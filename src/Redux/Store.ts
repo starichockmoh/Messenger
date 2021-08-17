@@ -3,10 +3,12 @@ import thunkMiddleware from "redux-thunk";
 import createSagaMiddleware from "redux-saga"
 import {all} from "redux-saga/effects";
 import {AppReducer} from "./Reducers/AppReducer";
+import {ChannelInfoReducer} from "./Reducers/ChannelInfoReducer";
 
 
 const MainReducer = combineReducers({
-    App: AppReducer
+    App: AppReducer,
+    ChannelInfo: ChannelInfoReducer
 })
 
 export type AppStateType = ReturnType<typeof MainReducer>

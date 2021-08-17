@@ -24,13 +24,12 @@ import "../LeftSideBar/AnimationSideBar.css"
 import {NavLink} from "react-router-dom";
 
 export const Menu: React.FC = () => {
-    const dispatch = useDispatch()
-    const DisableMenu = () => {
-        dispatch(AppAC.SetMenu(false))
-    }
     return <MenuBlock>
         <CloseButton>
-            <Button onClick={DisableMenu} type={"link"} danger icon={<CloseOutlined/>}/>
+            <CustomNavLink to={'/'}>
+                <Button type={"link"} danger icon={<CloseOutlined/>}/>
+            </CustomNavLink>
+
         </CloseButton>
         <MenuHeader>
             <MenuAvatar src={seva}/>

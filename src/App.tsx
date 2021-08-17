@@ -11,11 +11,8 @@ import {LeftSideBar} from "./Components/LeftSideBar/LeftSideBar";
 
 
 const App = () => {
-    const isActiveMenu = useSelector((state: AppStateType) => state.App.isActiveMenu)
     return <>
-        <CSSTransition unmountOnExit in={isActiveMenu} classNames={'sideBar'} timeout={300}>
-           <LeftSideBar/>
-        </CSSTransition>
+        <LeftSideBar/>
         <Layout/>
     </>
 }

@@ -19,6 +19,9 @@ export const UserBlock = styled("div")`
 export const UserBlock_Avatar = styled("div")`
   grid-area: Avatar;
   padding: 10%;
+  :hover{
+    cursor: pointer;
+  }
 `
 
 export const UserBlock_AdInfo = styled("div")`

@@ -7,6 +7,7 @@ import {CSSTransition} from "react-transition-group";
 import "./AnimationSideBar.css"
 import { Calls } from "../Calls/Calls";
 import {Contacts} from "../Contacts/Contacts";
+import {EditProfile} from "../EditProfile/EditProfile";
 
 export const LeftSideBar: React.FC = () => {
     const history = useHistory()
@@ -20,7 +21,7 @@ export const LeftSideBar: React.FC = () => {
         <CSSTransition unmountOnExit in={CurrentPage==="settings"} classNames={'sideBar'} timeout={300}>
             <SettingsPage/>
         </CSSTransition>
-        <CSSTransition unmountOnExit in={CurrentPage===""} classNames={'sideBar'} timeout={300}>
+        <CSSTransition unmountOnExit in={CurrentPage==="menu"} classNames={'sideBar'} timeout={300}>
             <Menu/>
         </CSSTransition>
         <CSSTransition unmountOnExit in={CurrentPage==="calls"} classNames={'sideBar'} timeout={300}>
@@ -28,6 +29,9 @@ export const LeftSideBar: React.FC = () => {
         </CSSTransition>
         <CSSTransition unmountOnExit in={CurrentPage==="contacts"} classNames={'sideBar'} timeout={300}>
             <Contacts/>
+        </CSSTransition>
+        <CSSTransition unmountOnExit in={CurrentPage==="edit_profile"} classNames={'sideBar'} timeout={300}>
+            <EditProfile/>
         </CSSTransition>
     </>
 

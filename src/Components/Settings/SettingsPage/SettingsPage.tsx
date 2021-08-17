@@ -9,7 +9,9 @@ import {
 } from "./SettingsPage.styled"
 import seva from "./../../../Assets/photo_2017-11-03_18-44-32.jpg"
 import {SideHeader} from "../../LeftSideBar/SideHeader";
-import {SpecialLine} from "../../ChannelInfo/ChannelInfo.styled";
+import {Upload} from "antd";
+import { CustomNavLink } from "../../Menu/Menu.styled";
+import { SpecialLine } from "../../Common/CommonElements.styled";
 
 export const SettingsPage: React.FC = () => {
     return <Settings>
@@ -31,9 +33,9 @@ export const SettingsPage: React.FC = () => {
         <div>
             <SettingsItem>
                 <EditIcon/>
-                <div>
+                <CustomNavLink to={'/edit_profile'}>
                     Edit profile
-                </div>
+                </CustomNavLink>
             </SettingsItem>
             <SettingsItem>
                 <NotificationsIcon/>
