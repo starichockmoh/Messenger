@@ -5,10 +5,11 @@ import {
     DescIcon,
     DescIconBlock,
     DescriptionBlock, DescriptionContent,
-    DescriptionContentBlock, LineHr, NotificationBlock, NotificationIcon, NotificationIconBlock
+    DescriptionContentBlock, NotificationBlock, NotificationIcon, NotificationIconBlock
 } from "./Description.styled"
 import {ExclamationCircleOutlined} from "@ant-design/icons";
 import { Switch } from "antd";
+import { LineHr } from "../../../Common/CommonElements.styled";
 
 type PropsType = {
     isChannel: boolean

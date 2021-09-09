@@ -73,6 +73,9 @@ export const VoiceIcon = styled(AudioOutlined)`
 export const IconBlock = styled("div")`
   text-align: center;
 `
+
+
+
 export const MediaContent = styled("div")`
   display: grid;
   padding-top: 3%;

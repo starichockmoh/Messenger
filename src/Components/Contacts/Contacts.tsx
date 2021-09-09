@@ -30,162 +30,48 @@ export const Contacts: React.FC = () => {
                       placeholder={'Search'}/>
         </SearchBlock>
         <ContactsList>
-            <Contact>
-                <ContactAvatar src={photo}/>
-                <div>
-                    <ContactsUserName>
-                        Vladislav
-                    </ContactsUserName>
-                    <LastData>
-                        last seen 7 hours ago
-                    </LastData>
-                </div>
-
-            </Contact>
-            <Contact>
-                <ContactAvatar src={photo1}/>
-                <div>
-                    <ContactsUserName>
-                        Kalim
-                    </ContactsUserName>
-                    <LastData>
-                        last seen 21.09.12
-                    </LastData>
-                </div>
-
-            </Contact>
-            <Contact>
-                <ContactAvatar src={photo2}/>
-                <div>
-                    <ContactsUserName>
-                        Kissa
-                    </ContactsUserName>
-                    <LastData>
-                        last seen 3 hours ago
-                    </LastData>
-                </div>
-
-            </Contact>
-            <Contact>
-                <ContactAvatar src={photo3}/>
-                <div>
-                    <ContactsUserName>
-                        Vasik
-                    </ContactsUserName>
-                    <LastData>
-                        online
-                    </LastData>
-                </div>
-            </Contact>
-            <Contact>
-                <ContactAvatar src={photo4}/>
-                <div>
-                    <ContactsUserName>
-                        Юран
-                    </ContactsUserName>
-                    <LastData>
-                        last seen recently
-                    </LastData>
-                </div>
-            </Contact>
-            <Contact>
-                <ContactAvatar src={photo1}/>
-                <div>
-                    <ContactsUserName>
-                        Kalim
-                    </ContactsUserName>
-                    <LastData>
-                        last seen 21.09.12
-                    </LastData>
-                </div>
-
-            </Contact>
-            <Contact>
-                <ContactAvatar src={photo2}/>
-                <div>
-                    <ContactsUserName>
-                        Kissa
-                    </ContactsUserName>
-                    <LastData>
-                        last seen 3 hours ago
-                    </LastData>
-                </div>
-
-            </Contact>
-            <Contact>
-                <ContactAvatar src={photo3}/>
-                <div>
-                    <ContactsUserName>
-                        Vasik
-                    </ContactsUserName>
-                    <LastData>
-                        online
-                    </LastData>
-                </div>
-            </Contact>
-            <Contact>
-                <ContactAvatar src={photo4}/>
-                <div>
-                    <ContactsUserName>
-                        Юран
-                    </ContactsUserName>
-                    <LastData>
-                        last seen recently
-                    </LastData>
-                </div>
-            </Contact>
-            <Contact>
-                <ContactAvatar src={photo1}/>
-                <div>
-                    <ContactsUserName>
-                        Kalim
-                    </ContactsUserName>
-                    <LastData>
-                        last seen 21.09.12
-                    </LastData>
-                </div>
-
-            </Contact>
-            <Contact>
-                <ContactAvatar src={photo2}/>
-                <div>
-                    <ContactsUserName>
-                        Kissa
-                    </ContactsUserName>
-                    <LastData>
-                        last seen 3 hours ago
-                    </LastData>
-                </div>
-
-            </Contact>
-            <Contact>
-                <ContactAvatar src={photo3}/>
-                <div>
-                    <ContactsUserName>
-                        Vasik
-                    </ContactsUserName>
-                    <LastData>
-                        online
-                    </LastData>
-                </div>
-            </Contact>
-            <Contact>
-                <ContactAvatar src={photo4}/>
-                <div>
-                    <ContactsUserName>
-                        Юран
-                    </ContactsUserName>
-                    <LastData>
-                        last seen recently
-                    </LastData>
-                </div>
-            </Contact>
+            <ContactElement Data={'last seen 7 hours ago'} Name={' Vladislav'} Photo={photo}/>
+            <ContactElement Data={' last seen 21.09.12'} Name={'Kalim'} Photo={photo1}/>
+            <ContactElement Data={'last seen 3 hours ago'} Name={'Kissa'} Photo={photo2}/>
+            <ContactElement Data={'online'} Name={'Vasik'} Photo={photo3}/>
+            <ContactElement Data={'last seen recently'} Name={'Юран'} Photo={photo4}/>
+            <ContactElement Data={'last seen 21.09.12'} Name={'Kalim'} Photo={photo1}/>
+            <ContactElement Data={'last seen 3 hours ago'} Name={'Kissa'} Photo={photo2}/>
+            <ContactElement Data={'online'} Name={'Vasik'} Photo={photo3}/>
+            <ContactElement Data={' last seen 21.09.12'} Name={'Kalim'} Photo={photo1}/>
+            <ContactElement Data={'last seen 3 hours ago'} Name={'Kissa'} Photo={photo2}/>
+            <ContactElement Data={'online'} Name={'Vasik'} Photo={photo3}/>
+            <ContactElement Data={'last seen recently'} Name={'Юран'} Photo={photo4}/>
+            <ContactElement Data={'last seen 3 hours ago'} Name={'Kissa'} Photo={photo2}/>
+            <ContactElement Data={'online'} Name={'Vasik'} Photo={photo3}/>
+            <ContactElement Data={' last seen 21.09.12'} Name={'Kalim'} Photo={photo1}/>
         </ContactsList>
+
         <AddContactBlock>
             <AddContactButton type={"link"}>
                 ADD CONTACT
             </AddContactButton>
-
         </AddContactBlock>
     </ContactsBlock>
+}
+
+
+
+type ContactPropsType = {
+    Name: string
+    Data: string
+    Photo: string
+}
+const ContactElement: React.FC<ContactPropsType> = ({Data, Name, Photo}) => {
+    return <Contact>
+        <ContactAvatar src={Photo}/>
+        <div>
+            <ContactsUserName>
+                {Name}
+            </ContactsUserName>
+            <LastData>
+                {Data}
+            </LastData>
+        </div>
+    </Contact>
 }

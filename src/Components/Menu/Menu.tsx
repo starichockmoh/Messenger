@@ -4,9 +4,9 @@ import {
     CallsIcon,
     ChannelIcon,
     CloseButton,
-    ContactsIcon, CustomNavLink,
+    ContactsIcon,
     GroupIcon,
-    IconBlock,
+    IconBlock, LogoutIcon,
     MenuAvatar,
     MenuBlock,
     MenuContent,
@@ -18,10 +18,9 @@ import {
 } from "./Menu.styled"
 import {Button} from "antd";
 import seva from "./../../Assets/photo_2017-11-03_18-44-32.jpg"
-import {useDispatch} from "react-redux";
-import {AppAC} from "../../Redux/Reducers/AppReducer";
 import "../LeftSideBar/AnimationSideBar.css"
-import {NavLink} from "react-router-dom";
+import {CustomNavLink} from "../Common/CommonElements.styled";
+import {StyledComponent} from "styled-components";
 
 export const Menu: React.FC = () => {
     return <MenuBlock>
@@ -29,62 +28,19 @@ export const Menu: React.FC = () => {
             <CustomNavLink to={'/'}>
                 <Button type={"link"} danger icon={<CloseOutlined/>}/>
             </CustomNavLink>
-
         </CloseButton>
-        <MenuHeader>
-            <MenuAvatar src={seva}/>
-            <MenuInfo>
-                <div>
-                    Сева Борисян
-                </div>
-                <div>
-                    +7 989 564 45 25
-                </div>
-            </MenuInfo>
-        </MenuHeader>
-        <MenuContent>
-            <MenuItem>
-                <IconBlock>
-                    <GroupIcon/>
-                </IconBlock>
-                <CustomNavLink to={'/settings'}>
-                    New Group
-                </CustomNavLink>
-            </MenuItem>
-            <MenuItem>
-                <IconBlock>
-                    <ChannelIcon/>
-                </IconBlock>
-                <CustomNavLink to={'/settings'}>
-                    New Channel
-                </CustomNavLink>
-            </MenuItem>
-            <MenuItem>
-                <IconBlock>
-                    <ContactsIcon/>
-                </IconBlock>
-                <CustomNavLink to={'/contacts'}>
-                    Contacts
-                </CustomNavLink>
-            </MenuItem>
-            <MenuItem>
-                <IconBlock>
-                    <CallsIcon/>
-                </IconBlock>
-                <CustomNavLink to={'/calls'}>
-                    Calls
-                </CustomNavLink>
-            </MenuItem>
-            <MenuItem>
-                <IconBlock>
-                    <SettingsIcon/>
-                </IconBlock>
-                <CustomNavLink to={'/settings'}>
-                    Settings
-                </CustomNavLink>
 
-            </MenuItem>
+        <UserInfo Name={'Сева Борисян'} Phone={'+7 989 564 45 25'} Avatar={seva}/>
+
+        <MenuContent>
+            <MenuElement Name={'New Group'} Link={'/settings'} Icon={GroupIcon}/>
+            <MenuElement Name={'New Channel'} Link={'/settings'} Icon={ChannelIcon}/>
+            <MenuElement Name={'Contacts'} Link={'/contacts'} Icon={ContactsIcon}/>
+            <MenuElement Name={'Calls'} Link={'/calls'} Icon={CallsIcon}/>
+            <MenuElement Name={'Settings'} Link={'/settings'} Icon={SettingsIcon}/>
+            <MenuElement Name={'Exit'} Link={'/exit'} Icon={LogoutIcon}/>
         </MenuContent>
+
         <MenuFooter>
             <div>
                 Telegram Desktop
@@ -93,6 +49,42 @@ export const Menu: React.FC = () => {
                 Version: 1331:dsc33
             </div>
         </MenuFooter>
-
     </MenuBlock>
+}
+
+type UserInfoPropsType = {
+    Avatar: string
+    Name: string
+    Phone: string
+}
+
+const UserInfo: React.FC<UserInfoPropsType> = ({Avatar, Phone, Name}) => {
+    return  <MenuHeader>
+        <MenuAvatar src={Avatar}/>
+        <MenuInfo>
+            <div>
+                {Name}
+            </div>
+            <div>
+                {Phone}
+            </div>
+        </MenuInfo>
+    </MenuHeader>
+}
+
+type MenuElementPropsType = {
+    Name: string
+    Link: string
+    Icon: StyledComponent<any, any, any, any>
+}
+export const MenuElement: React.FC<MenuElementPropsType> = ({Link, Icon, Name}) => {
+  return  <MenuItem>
+      <IconBlock>
+          <Icon/>
+      </IconBlock>
+      <CustomNavLink to={Link}>
+          {Name}
+      </CustomNavLink>
+
+  </MenuItem>
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import {IconBlock, OptionContent, OptionsBlock, OptionsIcon} from "./Options.styled"
 import {Button} from "antd";
+import {OptionElement} from "./OptionElement";
 
 
 export const ChannelOptions: React.FC = () => {
@@ -13,12 +14,7 @@ export const ChannelOptions: React.FC = () => {
                 Leave channel
             </div>
         </OptionContent>
-        <OptionContent>
-            <br/>
-            <div style={{color: 'red'}}>
-                Report
-            </div>
-        </OptionContent>
+        <OptionElement Option={'Report'} AddStyle={{color: 'red'}}/>
     </OptionsBlock>
 }
 

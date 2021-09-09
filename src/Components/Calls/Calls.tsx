@@ -7,153 +7,47 @@ import photo2 from "./../../Assets/maska.jpg"
 import photo3 from "./../../Assets/putin.jpeg"
 import photo4 from "./../../Assets/krest.jpg"
 import {SideHeader} from "../LeftSideBar/SideHeader";
+import {StyledComponent} from "styled-components";
 
 export const Calls: React.FC = () => {
     return <CallsBlock>
         <SideHeader header={'Calls'}/>
-        <CallsItem>
-            <CallAvatar src={photo}/>
-            <div>
-                <CallUserName>
-                    SevaBor
-                </CallUserName>
-                <CallData>
-                    june 1 at 10:56
-                </CallData>
-            </div>
-            <PhoneIcon/>
-        </CallsItem>
-        <CallsItem>
-            <CallAvatar src={photo1}/>
-            <div>
-                <CallUserName>
-                    Catik
-                </CallUserName>
-                <CallData>
-                    april at 14:22
-                </CallData>
-            </div>
-            <VideoIcon/>
-        </CallsItem>
-        <CallsItem>
-            <CallAvatar src={photo}/>
-            <div>
-                <CallUserName>
-                    SevaBor
-                </CallUserName>
-                <CallData>
-                    april 1 at 10:00
-                </CallData>
-            </div>
-            <PhoneIcon/>
-        </CallsItem>
-        <CallsItem>
-            <CallAvatar src={photo2}/>
-            <div>
-                <CallUserName>
-                    SevaBor
-                </CallUserName>
-                <CallData>
-                    june 1 at 10:56
-                </CallData>
-            </div>
-            <PhoneIcon/>
-        </CallsItem>
-        <CallsItem>
-            <CallAvatar src={photo3}/>
-            <div>
-                <CallUserName>
-                    Catik
-                </CallUserName>
-                <CallData>
-                    april at 14:22
-                </CallData>
-            </div>
-            <VideoIcon/>
-        </CallsItem>
-        <CallsItem>
-            <CallAvatar src={photo}/>
-            <div>
-                <CallUserName>
-                    SevaBor
-                </CallUserName>
-                <CallData>
-                    april 1 at 10:00
-                </CallData>
-            </div>
-            <PhoneIcon/>
-        </CallsItem>
-        <CallsItem>
-            <CallAvatar src={photo}/>
-            <div>
-                <CallUserName>
-                    SevaBor
-                </CallUserName>
-                <CallData>
-                    june 1 at 10:56
-                </CallData>
-            </div>
-            <PhoneIcon/>
-        </CallsItem>
-        <CallsItem>
-            <CallAvatar src={photo1}/>
-            <div>
-                <CallUserName>
-                    Catik
-                </CallUserName>
-                <CallData>
-                    april at 14:22
-                </CallData>
-            </div>
-            <VideoIcon/>
-        </CallsItem>
-        <CallsItem>
-            <CallAvatar src={photo4}/>
-            <div>
-                <CallUserName>
-                   Isus
-                </CallUserName>
-                <CallData>
-                    april 1 at 10:00
-                </CallData>
-            </div>
-            <VideoIcon/>
-        </CallsItem>
-        <CallsItem>
-            <CallAvatar src={photo}/>
-            <div>
-                <CallUserName>
-                    Artem
-                </CallUserName>
-                <CallData>
-                    june 1 at 10:56
-                </CallData>
-            </div>
-            <PhoneIcon/>
-        </CallsItem>
-        <CallsItem>
-            <CallAvatar src={photo2}/>
-            <div>
-                <CallUserName>
-                    Mahmud
-                </CallUserName>
-                <CallData>
-                    april at 14:22
-                </CallData>
-            </div>
-            <VideoIcon/>
-        </CallsItem>
-        <CallsItem>
-            <CallAvatar src={photo}/>
-            <div>
-                <CallUserName>
-                    Karim
-                </CallUserName>
-                <CallData>
-                    april 1 at 10:00
-                </CallData>
-            </div>
-            <PhoneIcon/>
-        </CallsItem>
+        <Call Name={'SevaBor'} Icon={PhoneIcon} Avatar={photo} LastData={'june 1 at 10:56'}/>
+        <Call Name={'Catik'} Icon={VideoIcon} Avatar={photo1} LastData={'april 1 at 10:00'}/>
+        <Call Name={'SevaBor'} Icon={VideoIcon} Avatar={photo2} LastData={'april at 14:22'}/>
+        <Call Name={'Chelpver'} Icon={PhoneIcon} Avatar={photo3} LastData={'june 1 at 10:56'}/>
+        <Call Name={'Putin'} Icon={PhoneIcon} Avatar={photo4} LastData={'april at 14:22'}/>
+        <Call Name={'Medved'} Icon={PhoneIcon} Avatar={photo} LastData={'june 1 at 10:56'}/>
+        <Call Name={'Mamont'} Icon={PhoneIcon} Avatar={photo1} LastData={'june 1 at 10:56'}/>
+        <Call Name={'her'} Icon={VideoIcon} Avatar={photo4} LastData={'april at 14:22'}/>
+        <Call Name={'DON Carkeone'} Icon={PhoneIcon} Avatar={photo2} LastData={'april at 14:22'}/>
+        <Call Name={'Vitek'} Icon={VideoIcon} Avatar={photo} LastData={'yesterday'}/>
+        <Call Name={'Putin'} Icon={PhoneIcon} Avatar={photo4} LastData={'april at 14:22'}/>
+        <Call Name={'Medved'} Icon={PhoneIcon} Avatar={photo} LastData={'june 1 at 10:56'}/>
+        <Call Name={'Mamont'} Icon={PhoneIcon} Avatar={photo1} LastData={'june 1 at 10:56'}/>
+        <Call Name={'her'} Icon={VideoIcon} Avatar={photo4} LastData={'april at 14:22'}/>
+        <Call Name={'DON Carkeone'} Icon={PhoneIcon} Avatar={photo2} LastData={'april at 14:22'}/>
     </CallsBlock>
+}
+
+type CallsItemPropsType = {
+    LastData: string
+    Name: string
+    Avatar: string
+    Icon: StyledComponent<any, any, any, any>
+}
+
+const Call: React.FC<CallsItemPropsType> = ({Avatar, Icon, Name, LastData}) => {
+    return <CallsItem>
+        <CallAvatar src={Avatar}/>
+        <div>
+            <CallUserName>
+                {Name}
+            </CallUserName>
+            <CallData>
+                {LastData}
+            </CallData>
+        </div>
+        <Icon/>
+    </CallsItem>
 }

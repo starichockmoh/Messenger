@@ -5,7 +5,7 @@ import {
     UserOutlined,
     NotificationOutlined,
     UsergroupAddOutlined,
-    PhoneOutlined
+    PhoneOutlined, LogoutOutlined
 } from "@ant-design/icons";
 import {NavLink} from "react-router-dom";
 
@@ -55,12 +55,7 @@ export const MenuItem = styled("div")`
     cursor: pointer;
   }
 `
-export const CustomNavLink = styled(NavLink)`
-    color: black;
-  :hover{
-    color: #08c;
-  }
-`
+
 
 
 //icons
@@ -84,6 +79,11 @@ export const CallsIcon = styled(PhoneOutlined)`
   color: gray
 `
 export const SettingsIcon = styled(SettingOutlined)`
+  font-size: 20px;
+  color: gray
+`
+
+export const LogoutIcon = styled(LogoutOutlined)`
   font-size: 20px;
   color: gray
 `

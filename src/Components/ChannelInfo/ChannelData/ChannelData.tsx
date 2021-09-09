@@ -11,15 +11,18 @@ import consta from "../../../Assets/1337.jpg";
 import {Description} from "./Description/Description";
 import {ChannelOptions} from "./Options/ChannelOptions";
 import {ChannelInfoAC, ChannelInfoPageType} from "../../../Redux/Reducers/ChannelInfoReducer";
-import { ChannelInfoBlock } from "../ChannelInfo.styled";
-import { SpecialLine } from "../../Common/CommonElements.styled";
+import {ChannelInfoBlock} from "../ChannelInfo.styled";
+import {SpecialLine} from "../../Common/CommonElements.styled";
+import {StyledComponent} from "styled-components";
+import {numberWithSpaces} from "../../../Helper Functions/ToNiceNumber";
+import {DialogOptions} from "./Options/DialigOptions";
 
 type PropsType = {
     ChangePage: (page: ChannelInfoPageType) => void
 
 }
 
-export const ChannelData:React.FC<PropsType> = ({ChangePage}) => {
+export const ChannelData: React.FC<PropsType> = ({ChangePage}) => {
     let text = 'Канал патриархальных констерваторов\n' +
         '\n' +
         'По всем вопросам:\n' +
@@ -33,81 +36,60 @@ export const ChannelData:React.FC<PropsType> = ({ChangePage}) => {
         'Чат - t.me/joinchat/VenLIrtIhfrioKBN'
 
     return <ChannelInfoBlock>
-            <InfoTitle>
-                <InfoTitleAvatarBlock>
-                    <InfoTitleAvatar src={consta}/>
-                </InfoTitleAvatarBlock>
-                <AddInfoBlock>
-                    <InfoTitleName>
-                        1337 const
-                    </InfoTitleName>
-                    <InfoTitleAddInfo>
-                        24 000 subscribers
-                    </InfoTitleAddInfo>
-                </AddInfoBlock>
-            </InfoTitle>
-            <SpecialLine/>
-            <div>
-                <Description isChannel={true} ChannelInfo={{Description: text, Link: 't.me/tg13337const'}}/>
-                {/*<Description isChannel={false} UserInfo={{UserName: '@ilisseo', Bio: 'yoy', Mobile: '+7-919-78-21-90'}}/>*/}
-            </div>
-            <SpecialLine/>
-            <div>
-                <MediaBlock>
-                    <MediaContent>
-                        <IconBlock>
-                            <ImageIcon/>
-                        </IconBlock>
-                        <MediaContentLink onClick={() => ChangePage("IMAGES")}>
-                            5678 photos
-                        </MediaContentLink>
-                    </MediaContent>
-                    <MediaContent>
-                        <IconBlock>
-                            <VideoIcon/>
-                        </IconBlock>
-                        <MediaContentLink>
-                            300 videos
-                        </MediaContentLink>
-                    </MediaContent>
-                    <MediaContent>
-                        <IconBlock>
-                            <FilesIcon/>
-                        </IconBlock>
-                        <MediaContentLink>
-                            5 files
-                        </MediaContentLink>
-                    </MediaContent>
-                    <MediaContent>
-                        <IconBlock>
-                            <AudioIcon/>
-                        </IconBlock>
-                        <MediaContentLink>
-                            20 audio files
-                        </MediaContentLink>
-                    </MediaContent>
-                    <MediaContent>
-                        <IconBlock>
-                            <LinksIcon/>
-                        </IconBlock>
-                        <MediaContentLink>
-                            600 shared links
-                        </MediaContentLink>
-                    </MediaContent>
-                    <MediaContent>
-                        <IconBlock>
-                            <VoiceIcon/>
-                        </IconBlock>
-                        <MediaContentLink>
-                            3 voice messages
-                        </MediaContentLink>
-                    </MediaContent>
-                </MediaBlock>
-            </div>
-            <SpecialLine/>
-            <div>
-                <ChannelOptions/>
-                {/*<DialogOptions/>*/}
-            </div>
-        </ChannelInfoBlock>
+        <TitleElement AddInfo={24000} IsChannel={true} Name={'1337 const'} Avatar={consta}/>
+        <SpecialLine/>
+        <Description isChannel={true} ChannelInfo={{Description: text, Link: 't.me/tg13337const'}}/>
+        {/*<Description isChannel={false} UserInfo={{UserName: '@ilisseo', Bio: 'yoy', Mobile: '+7-919-78-21-90'}}/>*/}
+        <SpecialLine/>
+        <MediaBlock>
+            <MediaElement Icon={ImageIcon} Count={'5678 photos'} ChangePage={() => ChangePage('IMAGES')}/>
+            <MediaElement Icon={VideoIcon} Count={'300 videos'}  ChangePage={() => ChangePage('IMAGES')}/>
+            <MediaElement Icon={FilesIcon} Count={'20 audio files'}  ChangePage={() => ChangePage('IMAGES')}/>
+            <MediaElement Icon={AudioIcon} Count={'5678 photos'}  ChangePage={() => ChangePage('IMAGES')}/>
+            <MediaElement Icon={VoiceIcon} Count={'3 voice messages'}  ChangePage={() => ChangePage('IMAGES')}/>
+        </MediaBlock>
+        <SpecialLine/>
+        <ChannelOptions/>
+        {/*<DialogOptions/>*/}
+    </ChannelInfoBlock>
+}
+
+
+type MediaElementPropsType = {
+    Icon: StyledComponent<any, any, any, any>
+    Count: string
+    ChangePage: () => void
+}
+const MediaElement: React.FC<MediaElementPropsType> = ({Count, Icon, ChangePage}) => {
+    return <MediaContent onClick={ChangePage}>
+        <IconBlock>
+            <Icon/>
+        </IconBlock>
+        <MediaContentLink>
+            {Count}
+        </MediaContentLink>
+    </MediaContent>
+}
+
+
+type TitleElementPropsType = {
+    Name: string
+    AddInfo: number
+    IsChannel: boolean
+    Avatar: string
+}
+const TitleElement: React.FC<TitleElementPropsType> = ({AddInfo, Name, IsChannel, Avatar}) => {
+    return <InfoTitle>
+        <InfoTitleAvatarBlock>
+            <InfoTitleAvatar src={Avatar}/>
+        </InfoTitleAvatarBlock>
+        <AddInfoBlock>
+            <InfoTitleName>
+                {Name}
+            </InfoTitleName>
+            <InfoTitleAddInfo>
+                {numberWithSpaces(AddInfo)} {IsChannel ? 'subscribers' : 'friends'}
+            </InfoTitleAddInfo>
+        </AddInfoBlock>
+    </InfoTitle>
 }

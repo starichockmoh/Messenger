@@ -1,4 +1,4 @@
-import React, {StrictMode} from "react";
+import React, {StrictMode, useState} from "react";
 import {Provider, useDispatch, useSelector} from "react-redux";
 import store, {AppStateType} from "./Redux/Store";
 import {BrowserRouter, withRouter} from "react-router-dom";
@@ -8,13 +8,17 @@ import {SettingsPage} from "./Components/Settings/SettingsPage/SettingsPage"
 import {CSSTransition} from "react-transition-group";
 import "./Components/LeftSideBar/AnimationSideBar.css"
 import {LeftSideBar} from "./Components/LeftSideBar/LeftSideBar";
+import {Exit} from "./Components/Exit/Exit";
+import {LoginPage} from "./Components/Login/LoginPage";
 
 
 const App = () => {
-    return <>
+    const [isAuth, SetAuth] = useState(true)
+    if (isAuth) return <>
         <LeftSideBar/>
         <Layout/>
     </>
+    else return <LoginPage/>
 }
 const AppRouter = withRouter(App)
 const AppContainer = () => {

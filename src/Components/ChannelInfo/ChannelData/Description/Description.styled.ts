@@ -45,12 +45,7 @@ export const NotificationBlock = styled("div")`
   grid-template-columns: 5fr 1fr;
 `
 
-export const LineHr = styled("hr")`
-  border: none; /* Убираем границу для браузера Firefox */
-  color: #CDC5BF; /* Цвет линии для остальных браузеров */
-  background-color: #CDC5BF; /* Цвет линии для браузера Firefox и Opera */
-  height: 0.3px; /* Толщина линии */
-`
+
 
 
 

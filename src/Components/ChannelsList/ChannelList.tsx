@@ -6,11 +6,18 @@ import consta from "./../../Assets/1337.jpg"
 import amds from "./../../Assets/amds.jpg"
 import topor from "./../../Assets/topor.jpg"
 import screp from "./../../Assets/screp.jpg"
+import archive from "./../../Assets/arc.png"
 import {ChannelsBlock} from "./ChannelList.styled";
 
 
 export const ChannelList: React.FC = () => {
     return <ChannelsBlock>
+        <ChannelListItem ChannelPhoto={archive} ChannelName={'Archive Chats'}
+                         LastMessageData={''} MessagesCount={390}
+                         LastMessage={{ Media: null, Text: 'Биржа, Димон, 228клуб, Группа анонимных алкашей'}}
+                         IsChannel={false}
+                         IsArchived={true}
+        />
         <ChannelListItem ChannelPhoto={butil} ChannelName={'Бутылка'}
                          LastMessageData={'13:00'} MessagesCount={45}
                          LastMessage={{Media: 'Video', Text: 'Этим и объясняется почему Лёха решил'}}

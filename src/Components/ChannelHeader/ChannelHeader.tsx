@@ -10,6 +10,7 @@ import {
 } from "./ChannelHeader.styled"
 import {Button, Dropdown, Menu} from "antd";
 import {SearchOutlined} from "@ant-design/icons";
+import {numberWithSpaces} from "../../Helper Functions/ToNiceNumber";
 
 type PropsType = {
     name: string
@@ -37,9 +38,7 @@ const channelMenu = <Menu>
 
 
 export const Header: React.FC<PropsType> = ({subscribers, name, isChannel, lastData}) => {
-    function numberWithSpaces(x: number) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    }
+
     return <HeaderBlock>
         <div>
             <Name>
@@ -55,7 +54,6 @@ export const Header: React.FC<PropsType> = ({subscribers, name, isChannel, lastD
             <Dropdown overlay={isChannel? channelMenu: menu} trigger={['click']} placement={'bottomRight'}>
                 <IconsBlockButton type={"link"} icon={<MoreInfoIcon/>}/>
             </Dropdown>
-
         </IconsBlock>
 
 

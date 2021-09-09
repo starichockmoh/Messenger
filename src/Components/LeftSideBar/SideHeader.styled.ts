@@ -10,16 +10,17 @@ export const SettingsHeader = styled("div")`
   padding: 10px;
   display: grid;
   grid-template-columns: 3fr 1fr;
-  
+
 `
 export const SettingsLink = styled(NavLink)`
   color: black;
-  :hover{
+
+  :hover {
     color: white;
   }
 `
 
 export const HeadersName = styled("div")`
-    font-size: 150%;
+  font-size: 150%;
   float: top;
 `

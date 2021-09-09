@@ -8,6 +8,8 @@ import "./AnimationSideBar.css"
 import { Calls } from "../Calls/Calls";
 import {Contacts} from "../Contacts/Contacts";
 import {EditProfile} from "../EditProfile/EditProfile";
+import {ArchivedChannelList} from "../ChannelsList/ArchivedChannelList";
+import {Exit} from "../Exit/Exit";
 
 export const LeftSideBar: React.FC = () => {
     const history = useHistory()
@@ -32,6 +34,12 @@ export const LeftSideBar: React.FC = () => {
         </CSSTransition>
         <CSSTransition unmountOnExit in={CurrentPage==="edit_profile"} classNames={'sideBar'} timeout={300}>
             <EditProfile/>
+        </CSSTransition>
+        <CSSTransition unmountOnExit in={CurrentPage==="archived_chats"} classNames={'sideBar'} timeout={300}>
+            <ArchivedChannelList/>
+        </CSSTransition>
+        <CSSTransition unmountOnExit in={CurrentPage==="exit"} classNames={'sideBar'} timeout={300}>
+           <Exit/>
         </CSSTransition>
     </>
 
