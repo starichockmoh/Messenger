@@ -3,13 +3,16 @@ import {
     ChannelLink,
     Chapter,
     DescIcon,
-    DescIconBlock,
     DescriptionBlock, DescriptionContent,
-    DescriptionContentBlock, NotificationBlock, NotificationIcon, NotificationIconBlock
+    DescriptionContentBlock, NotificationBlock, NotificationIcon, IconBlock, SettingsIcon, SettingsBlock
 } from "./Description.styled"
 import {ExclamationCircleOutlined} from "@ant-design/icons";
 import { Switch } from "antd";
 import { LineHr } from "../../../Common/CommonElements.styled";
+import {useDispatch, useSelector} from "react-redux";
+import {ChannelInfoAC} from "../../../../Redux/Reducers/ChannelInfoReducer";
+const {SetPage} = ChannelInfoAC
+
 
 type PropsType = {
     isChannel: boolean
@@ -22,27 +25,38 @@ type PropsType = {
         Link: string
         Description: string
     }
+    isAdmin?: true
 }
 
 export const Description: React.FC<PropsType> = ({isChannel, ChannelInfo, UserInfo}) => {
+    const dispatch = useDispatch()
+
     return <DescriptionBlock>
-        <DescIconBlock>
+        <IconBlock>
             <DescIcon/>
-        </DescIconBlock>
+        </IconBlock>
         <DescriptionContentBlock>
             {ChannelInfo? <Channel ChannelInfo={ChannelInfo}/>: UserInfo? <User UserInfo={UserInfo}/> : null}
             <LineHr/>
         </DescriptionContentBlock>
-        <NotificationIconBlock>
+        <IconBlock>
             <NotificationIcon/>
-        </NotificationIconBlock>
+        </IconBlock>
         <NotificationBlock>
                 Notifications
                 <Switch size="small"/>
         </NotificationBlock>
-
+        <IconBlock>
+            <SettingsIcon/>
+        </IconBlock>
+        <SettingsBlock onClick={() => dispatch(SetPage("SETTINGS"))}>
+            Channel Settings
+        </SettingsBlock>
     </DescriptionBlock>
 }
+
+
+
 
 
 type ChannelPropsType = {
@@ -67,6 +81,10 @@ const Channel: React.FC<ChannelPropsType> = ({ChannelInfo}) => {
         </Chapter>
     </>
 }
+
+
+
+
 
 type UserPropsType = {
     UserInfo: {

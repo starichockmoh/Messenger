@@ -38,7 +38,7 @@ export const ChannelData: React.FC<PropsType> = ({ChangePage}) => {
     return <ChannelInfoBlock>
         <TitleElement AddInfo={24000} IsChannel={true} Name={'1337 const'} Avatar={consta}/>
         <SpecialLine/>
-        <Description isChannel={true} ChannelInfo={{Description: text, Link: 't.me/tg13337const'}}/>
+        <Description isAdmin={true} isChannel={true} ChannelInfo={{Description: text, Link: 't.me/tg13337const'}}/>
         {/*<Description isChannel={false} UserInfo={{UserName: '@ilisseo', Bio: 'yoy', Mobile: '+7-919-78-21-90'}}/>*/}
         <SpecialLine/>
         <MediaBlock>

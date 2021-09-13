@@ -4,11 +4,13 @@ import createSagaMiddleware from "redux-saga"
 import {all} from "redux-saga/effects";
 import {AppReducer} from "./Reducers/AppReducer";
 import {ChannelInfoReducer} from "./Reducers/ChannelInfoReducer";
+import {ChannelListsReducer} from "./Reducers/ChannelListsReducer";
 
 
 const MainReducer = combineReducers({
     App: AppReducer,
-    ChannelInfo: ChannelInfoReducer
+    ChannelInfo: ChannelInfoReducer,
+    ChannelLists: ChannelListsReducer,
 })
 
 export type AppStateType = ReturnType<typeof MainReducer>

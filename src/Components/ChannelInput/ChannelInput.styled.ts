@@ -10,12 +10,16 @@ type PropsType = {
 export const ChannelInputSearch = styled(Input)`
   background-color: ${(props: PropsType) => props.SearchStatus === 'Focus' ? 'white' : '#DCDCDC'};
   height: 28px;
+  margin: 10px;
 `
 
 export const SearchBlock = styled('div')`
-  display: grid;
-  grid-template-columns: 1fr 5.5fr;
-  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button{
+    color: black;
+  }
 `
 export const MenuButton = styled(Button)`
 `

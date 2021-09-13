@@ -1,6 +1,6 @@
 import {ActionsType} from "../../Types/Types";
 
-export type ChannelInfoPageType = 'INFO' | 'IMAGES'
+export type ChannelInfoPageType = 'INFO' | 'IMAGES' | 'SETTINGS'
 
 const InitialState = {
     CurrentPage: 'INFO' as ChannelInfoPageType

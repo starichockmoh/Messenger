@@ -5,6 +5,7 @@ import photo1 from "./.././../Assets/putin.jpeg"
 import {Message} from "./ContentItem/Message/Message";
 import {Post} from "./ContentItem/Post/Post";
 import {CommentsPage} from "./ContentItem/CommentsPage/CommentsPage";
+import {Button} from "antd";
 
 
 export const ContentBlock: React.FC = () => {
@@ -13,10 +14,10 @@ export const ContentBlock: React.FC = () => {
     switch (ContentState) {
         case "COMMENTS": {
             return <CommentsPage SetPage={SetContentState}/>
-
         }
         case "MESSAGES": {
             return <ContentWrapper>
+                <Button type={"link"} onClick={() => SetContentState("POSTS")}>Posts</Button>
                 <Message Date={'13:00'} IsFriend={true} Text={'Hello my friend'}/>
                 <Message Date={'13:01'} IsFriend={true} Text={'How are you'}/>
                 <Message Date={'13:04'} IsFriend={false} Text={'Hello!!!!'}/>
@@ -43,6 +44,7 @@ export const ContentBlock: React.FC = () => {
         }
         case "POSTS": {
             return <ContentWrapper>
+                <Button type={"link"} onClick={() => SetContentState("MESSAGES")}>Messages</Button>
                 <Post Date={'13:00'} Content={{}} SetPage={SetContentState} Views={300} CommentsCount={243}/>
                 <Post Date={'13:02'} Content={{}} SetPage={SetContentState} Views={500} CommentsCount={300}/>
             </ContentWrapper>

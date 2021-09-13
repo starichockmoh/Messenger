@@ -38,7 +38,6 @@ const channelMenu = <Menu>
 
 
 export const Header: React.FC<PropsType> = ({subscribers, name, isChannel, lastData}) => {
-
     return <HeaderBlock>
         <div>
             <Name>

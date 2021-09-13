@@ -1,29 +1,37 @@
 import styled from "styled-components";
-import {ExclamationCircleOutlined, BellOutlined} from "@ant-design/icons";
+import {ExclamationCircleOutlined, BellOutlined, SettingOutlined} from "@ant-design/icons";
 
 
 export const DescriptionBlock = styled("div")`
   display: grid;
   padding-right: 10%;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 5fr 0.5fr;
+  grid-template-rows: 5fr 0.5fr 0.5fr;
 `
 
-export const DescIconBlock = styled("div")`
+export const IconBlock = styled("div")`
   text-align: center;
 `
 export const DescIcon = styled(ExclamationCircleOutlined)`
   font-size: 20px;
   color: gray
 `
-export const NotificationIconBlock = styled("div")`
-  text-align: center;
-`
+
 export const NotificationIcon = styled(BellOutlined)`
   font-size: 20px;
   color: gray
 `
-
+export const SettingsIcon = styled(SettingOutlined)`
+  font-size: 20px;
+  color: gray
+`
+export const SettingsBlock = styled.div`
+  cursor: pointer;
+  :hover{
+    color: #08c;
+  }
+  
+`
 
 
 
