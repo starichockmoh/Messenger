@@ -12,11 +12,14 @@ import {
 import {Avatar, Badge} from "antd";
 import {NotificationOutlined} from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {ActivateChannelsSaga} from "../../../Redux/Sagas/ChannelsSaga";
+import {ActivateDialogsSaga} from "../../../Redux/Sagas/DialogsSaga";
 
 type PropsType = {
     ChannelPhoto: string
     ChannelName: string
-    LastMessageData: string
+    LastMessageDate: string
     LastMessage: {
         Media: string | null
         Text: string | null
@@ -24,16 +27,29 @@ type PropsType = {
     MessagesCount: number
     IsChannel: boolean
     IsArchived?: true
+    id?: number
+    IsActive?: boolean
 }
 
 export const ChannelListItem: React.FC<PropsType> = (props) => {
+    const dispatch = useDispatch()
+    const SetDetails = () => {
+        if (!props.IsArchived){
+            if (props.IsChannel) {
+                dispatch(ActivateChannelsSaga.Details(props.id? props.id: 1))
+            } else {
+                dispatch(ActivateDialogsSaga.Details(props.id? props.id: 1))
+            }
+        }
+    }
+
     return <NavLink to={props.IsArchived? '/archived_chats': '#'}>
-        <ListItem>
+        <ListItem onClick={SetDetails} active = {props.IsActive}>
             <ChannelAvatar src={props.ChannelPhoto}/>
             <ChannelName> {props.IsChannel && <NotificationOutlined/>} {props.ChannelName} </ChannelName>
             <LastData>
                 <LastMessageData>
-                    {props.LastMessageData}
+                    {props.LastMessageDate}
                 </LastMessageData>
             </LastData>
             <LastMessage style={props.IsArchived? {color: 'black', fontWeight: 600}: undefined}>

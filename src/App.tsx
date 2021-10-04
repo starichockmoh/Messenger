@@ -1,4 +1,4 @@
-import React, {StrictMode, useState} from "react";
+import React, {StrictMode, useEffect, useState} from "react";
 import {Provider, useDispatch, useSelector} from "react-redux";
 import store, {AppStateType} from "./Redux/Store";
 import {BrowserRouter, withRouter} from "react-router-dom";
@@ -8,17 +8,29 @@ import {SettingsPage} from "./Components/Settings/SettingsPage/SettingsPage"
 import {CSSTransition} from "react-transition-group";
 import "./Components/LeftSideBar/AnimationSideBar.css"
 import {LeftSideBar} from "./Components/LeftSideBar/LeftSideBar";
-import {Exit} from "./Components/Exit/Exit";
 import {LoginPage} from "./Components/Login/LoginPage";
+import axios from "axios";
+import {authAPI} from "./Api/AuthAPI";
+import {ActivateAuthSaga} from "./Redux/Sagas/AuthSaga";
 
 
 const App = () => {
-    const [isAuth, SetAuth] = useState(true)
-    if (isAuth) return <>
+    const isAuth = useSelector((state: AppStateType) => state.Auth.isAuth)
+    const isInit  = useSelector((state: AppStateType) => state.App.isInit)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(ActivateAuthSaga.Auth())
+    }, [])
+
+    if (!isInit) return <div>
+        Init...
+    </div>
+    if (isAuth && isInit) return <>
         <LeftSideBar/>
         <Layout/>
     </>
-    else return <LoginPage/>
+    return <LoginPage/>
 }
 const AppRouter = withRouter(App)
 const AppContainer = () => {
